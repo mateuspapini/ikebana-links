@@ -211,41 +211,10 @@
     }
 
     /* Card-specific tones (RGB, no alpha) */
-    .card-whatsapp { --img: url('banner-ikebana-links-whatsapp.jpg');    --c: 120,60,80;   }
-    .card-vitrine  { --img: url('banner-ikebana-links-vitrine.jpg');     --c: 55,20,35; background-position: right center; }
-    .card-rosa     { --img: url('banner-ikebana-links-rosa-eterna.jpg'); --c: 60,12,28;    }
-    .card-curso    { --img: url('banner-ikebana-links-curso.jpg');       --c: 70,10,22;    background-position: right center; }
-
-    /* ─── TEMA VERDE (#145555) ───────────────────────── */
-    [data-tema="verde"] .card-whatsapp,
-    [data-tema="verde"] .card-vitrine,
-    [data-tema="verde"] .card-rosa,
-    [data-tema="verde"] .card-curso { --c: 20,85,85; }
-
-    /* ─── BOTÃO DE TEMA ──────────────────────────────── */
-    .theme-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      z-index: 999;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--gold-18);
-      background: var(--card);
-      box-shadow: 0 4px 16px rgba(0,0,0,.12);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .25s var(--ease-spring), box-shadow .25s ease;
-      padding: 0;
-    }
-    .theme-toggle:hover {
-      transform: scale(1.12);
-      box-shadow: 0 6px 20px rgba(0,0,0,.18);
-    }
-    .theme-toggle svg { width: 20px; height: 20px; }
+    .card-whatsapp { --img: url('banner-ikebana-links-whatsapp.jpg');    --c: 20,85,85; }
+    .card-vitrine  { --img: url('banner-ikebana-links-vitrine.jpg');     --c: 20,85,85; background-position: right center; }
+    .card-rosa     { --img: url('banner-ikebana-links-rosa-eterna.jpg'); --c: 20,85,85; }
+    .card-curso    { --img: url('banner-ikebana-links-curso.jpg');       --c: 20,85,85; background-position: right center; }
 
     /* Text content */
     .card-body {
@@ -357,6 +326,46 @@
       letter-spacing: .04em;
       opacity: .6;
     }
+
+    /* ─── DARK MODE ──────────────────────────────────── */
+    body.dark {
+      --bg:          #111111;
+      --card:        #1C1C1C;
+      --text:        #F0EDE8;
+      --muted:       #9A8A7A;
+      --gold-10:     rgba(184,134,78,.13);
+      --gold-18:     rgba(184,134,78,.28);
+      --gold-40:     rgba(184,134,78,.55);
+      --gold-shadow: rgba(184,134,78,.30);
+      background-image:
+        radial-gradient(ellipse 60% 50% at 10%  5%,  rgba(20,85,85,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 90% 95%, rgba(20,85,85,.12) 0%, transparent 70%);
+    }
+
+    /* Botão dark mode */
+    .dark-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-18);
+      background: var(--card);
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .25s var(--ease-spring), box-shadow .25s ease, background .3s, border-color .3s;
+      padding: 0;
+    }
+    .dark-toggle:hover {
+      transform: scale(1.12);
+      box-shadow: 0 6px 22px rgba(0,0,0,.22);
+    }
+    .dark-toggle svg { width: 20px; height: 20px; transition: color .3s; }
 
     /* ─── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 400px) {
@@ -530,40 +539,33 @@
 
   </div>
 
-  <!-- ── BOTÃO DE TEMA ─────────────────────────── -->
-  <button class="theme-toggle" id="themeBtn" title="Alternar tema de cores" aria-label="Alternar tema de cores">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="3"/>
-      <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-    </svg>
+  <!-- ── DARK MODE TOGGLE ──────────────────────── -->
+  <button class="dark-toggle" id="darkBtn" aria-label="Alternar modo escuro">
+    <!-- ícone trocado via JS -->
   </button>
 
   <script>
-    const btn  = document.getElementById('themeBtn');
+    const btn  = document.getElementById('darkBtn');
     const body = document.body;
-    const key  = 'ikebana-tema';
+    const key  = 'ikebana-mode';
 
-    const temas = ['original', 'verde'];
-    const icones = {
-      original: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
-      verde:    `<svg viewBox="0 0 24 24" fill="none" stroke="#145555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
-    };
+    const iconSol = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
+    const iconLua = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>`;
 
-    let atual = localStorage.getItem(key) || 'original';
-
-    function aplicarTema(tema) {
-      body.dataset.tema = tema === 'original' ? '' : tema;
-      btn.innerHTML = icones[tema];
-      localStorage.setItem(key, tema);
-      atual = tema;
+    function aplicar(dark) {
+      body.classList.toggle('dark', dark);
+      btn.innerHTML = dark ? iconSol : iconLua;
+      btn.setAttribute('aria-label', dark ? 'Ativar modo claro' : 'Ativar modo escuro');
+      localStorage.setItem(key, dark ? 'dark' : 'light');
     }
 
-    btn.addEventListener('click', () => {
-      const proximo = temas[(temas.indexOf(atual) + 1) % temas.length];
-      aplicarTema(proximo);
-    });
+    btn.addEventListener('click', () => aplicar(!body.classList.contains('dark')));
 
-    aplicarTema(atual);
+    // Carrega preferência salva ou usa preferência do sistema operacional
+    const salvo = localStorage.getItem(key);
+    const prefSistema = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    aplicar(salvo ? salvo === 'dark' : prefSistema);
   </script>
+
 </body>
 </html>
