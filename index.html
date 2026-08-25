@@ -1,571 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ikebana Flores – Desde 1988 transformando gestos em sentimentos.">
-  <meta property="og:title" content="Ikebana Flores">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; base-uri 'none'; form-action 'none'; require-trusted-types-for 'script'; trusted-types 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Links oficiais da Ikebana Flores. Desde 1988 transformando gestos em sentimentos.">
+  <meta name="theme-color" id="theme-color" content="#FAFAF7">
+
+  <title>Links oficiais | Ikebana Flores</title>
+  <link rel="canonical" href="https://links.ikebanaflores.com.br/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Ikebana Flores">
+  <meta property="og:title" content="Links oficiais | Ikebana Flores">
   <meta property="og:description" content="Desde 1988 transformando gestos em sentimentos.">
-  <meta property="og:image" content="https://www.ikebanaflores.com.br/media/tmp/webp/skin/frontend/ikebana/2022/images/logo_png.webp">
-  <title>Ikebana Flores</title>
+  <meta property="og:url" content="https://links.ikebanaflores.com.br/">
+  <meta property="og:image" content="https://links.ikebanaflores.com.br/assets/og-ikebana-links.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logotipo da Ikebana Flores">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Links oficiais | Ikebana Flores">
+  <meta name="twitter:description" content="Desde 1988 transformando gestos em sentimentos.">
+  <meta name="twitter:image" content="https://links.ikebanaflores.com.br/assets/og-ikebana-links.jpg">
 
-  <style>
-    /* ─── RESET ─────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ─── TOKENS ─────────────────────────────────────── */
-    :root {
-      --bg:          #FAFAF7;
-      --card:        #FFFFFF;
-      --text:        #2A1F1A;
-      --muted:       #9B8371;
-      --gold:        #B8864E;
-      --gold-10:     rgba(184,134,78,.10);
-      --gold-18:     rgba(184,134,78,.18);
-      --gold-40:     rgba(184,134,78,.40);
-      --gold-shadow: rgba(184,134,78,.22);
-      --radius:      16px;
-      --ease-spring: cubic-bezier(.34,1.56,.64,1);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: var(--bg);
-      background-image:
-        radial-gradient(ellipse 60% 50% at 10%  5%,  rgba(184,134,78,.06) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 90% 95%, rgba(184,134,78,.06) 0%, transparent 70%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 52px 16px 72px;
-      color: var(--text);
-    }
-
-    /* ─── CORNER ORNAMENTS ───────────────────────────── */
-    body::before, body::after {
-      content: '';
-      position: fixed;
-      width: 240px;
-      height: 240px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: .06;
-      pointer-events: none;
-      z-index: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23B8864E' stroke-width='1.5'%3E%3Cellipse cx='100' cy='50' rx='18' ry='42' transform='rotate(0,100,100)'/%3E%3Cellipse cx='100' cy='50' rx='18' ry='42' transform='rotate(45,100,100)'/%3E%3Cellipse cx='100' cy='50' rx='18' ry='42' transform='rotate(90,100,100)'/%3E%3Cellipse cx='100' cy='50' rx='18' ry='42' transform='rotate(135,100,100)'/%3E%3Ccircle cx='100' cy='100' r='10'/%3E%3Cline x1='100' y1='110' x2='100' y2='170'/%3E%3Cpath d='M85 145 Q100 135 115 145'/%3E%3C/g%3E%3C/svg%3E");
-    }
-    body::before { top: -40px; right: -40px; }
-    body::after  { bottom: -40px; left: -40px; transform: scaleX(-1); }
-
-    /* ─── CONTAINER ──────────────────────────────────── */
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 460px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* ─── PROFILE ─────────────────────────────────────── */
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding-bottom: 28px;
-      width: 100%;
-      animation: fadeUp .6s var(--ease-spring) both;
-    }
-
-    .avatar-ring {
-      position: relative;
-      width: 114px;
-      height: 114px;
-      margin-bottom: 22px;
-      animation: float 5.5s ease-in-out infinite;
-    }
-    .avatar-ring::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: conic-gradient(#E8C99A 0%, #B8864E 25%, #D4A96A 50%, #C9A07A 75%, #E8C99A 100%);
-      animation: spin-ring 9s linear infinite;
-      z-index: 0;
-    }
-    .avatar-ring::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: var(--bg);
-      margin: 3px;
-      z-index: 1;
-    }
-    .avatar {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    @keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-    @keyframes spin-ring{ to{transform:rotate(360deg)} }
-    @keyframes fadeUp   { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-
-    .profile-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.05rem;
-      font-weight: 600;
-      letter-spacing: .025em;
-      color: var(--text);
-      line-height: 1.15;
-      margin-bottom: 7px;
-    }
-    .profile-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      font-weight: 500;
-      font-style: italic;
-      color: var(--muted);
-      letter-spacing: .015em;
-      margin-bottom: 22px;
-    }
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 180px;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-    }
-    .divider::before { background: linear-gradient(to right,  transparent, var(--gold)); }
-    .divider::after  { background: linear-gradient(to left,   transparent, var(--gold)); }
-    .divider svg { flex-shrink: 0; opacity: .7; }
-
-    /* ─── IMAGE CARDS ────────────────────────────────── */
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      width: 100%;
-      padding: 28px 0 32px;
-    }
-
-    .link-card {
-      position: relative;
-      display: block;
-      height: 172px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      text-decoration: none;
-      background-size: cover;
-      background-position: center;
-      background-image: var(--img);
-      box-shadow: 0 4px 18px rgba(0,0,0,.14);
-      transition:
-        transform .30s var(--ease-spring),
-        box-shadow .30s ease;
-      will-change: transform;
-    }
-
-    /* Staggered entrance */
-    .link-card:nth-child(1) { animation: fadeUp .55s .10s var(--ease-spring) both; }
-    .link-card:nth-child(2) { animation: fadeUp .55s .20s var(--ease-spring) both; }
-    .link-card:nth-child(3) { animation: fadeUp .55s .30s var(--ease-spring) both; }
-    .link-card:nth-child(4) { animation: fadeUp .55s .40s var(--ease-spring) both; }
-
-    .link-card:hover {
-      transform: scale(1.025) translateY(-3px);
-      box-shadow: 0 12px 36px rgba(0,0,0,.22);
-    }
-    .link-card:active { transform: scale(.975); }
-
-    /* Gradient overlay: opaque on left → transparent on right */
-    .link-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(var(--c), .92)  0%,
-        rgba(var(--c), .82) 30%,
-        rgba(var(--c), .45) 58%,
-        rgba(var(--c), .00) 85%
-      );
-      z-index: 1;
-    }
-
-    /* Card-specific tones (RGB, no alpha) */
-    .card-whatsapp { --img: url('banner-ikebana-links-whatsapp.jpg');    --c: 20,85,85; }
-    .card-vitrine  { --img: url('banner-ikebana-links-vitrine.jpg');     --c: 20,85,85; background-position: right center; }
-    .card-rosa     { --img: url('banner-ikebana-links-rosa-eterna.jpg'); --c: 20,85,85; }
-    .card-curso    { --img: url('banner-ikebana-links-curso.jpg');       --c: 20,85,85; background-position: right center; }
-
-    /* Text content */
-    .card-body {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      width: 62%;
-      padding: 20px 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card-label {
-      font-size: .68rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: rgba(255,255,255,.65);
-    }
-
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.2;
-      margin: 4px 0 6px;
-    }
-
-    .card-desc { display: none; }
-
-    /* "Saiba mais" button */
-    .card-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 12px;
-      padding: 7px 16px;
-      border-radius: 40px;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.45);
-      color: #fff;
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .04em;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      transition: background .2s, border-color .2s;
-      align-self: flex-start;
-    }
-    .link-card:hover .card-btn {
-      background: rgba(255,255,255,.30);
-      border-color: rgba(255,255,255,.70);
-    }
-    .card-btn svg { width: 13px; height: 13px; }
-
-    /* ─── SOCIAL ICONS ────────────────────────────────── */
-    .social {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 26px;
-      animation: fadeUp .55s .50s var(--ease-spring) both;
-    }
-    .social-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 1px solid var(--gold-18);
-      background: var(--card);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: var(--text);
-      box-shadow: 0 1px 5px rgba(0,0,0,.04);
-      transition: transform .28s var(--ease-spring), box-shadow .28s ease, border-color .2s, color .2s;
-    }
-    .social-btn svg { width: 21px; height: 21px; }
-    .social-btn:hover {
-      transform: scale(1.14) translateY(-2px);
-      border-color: var(--gold-40);
-      box-shadow: 0 6px 20px var(--gold-shadow);
-    }
-    .social-btn.tiktok:hover    { color: #010101; }
-    .social-btn.instagram:hover { color: #E1306C; }
-    .social-btn.youtube:hover   { color: #FF0000; }
-
-    /* ─── FOOTER ──────────────────────────────────────── */
-    .footer {
-      text-align: center;
-      animation: fadeUp .55s .60s var(--ease-spring) both;
-    }
-    .footer-logo {
-      height: 36px;
-      opacity: .55;
-      margin-bottom: 10px;
-      filter: grayscale(1);
-      transition: opacity .2s, filter .2s;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .footer-logo:hover { opacity: .85; filter: grayscale(0); }
-    .footer-copy {
-      font-size: .68rem;
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: .04em;
-      opacity: .6;
-    }
-
-    /* ─── DARK MODE ──────────────────────────────────── */
-    body.dark {
-      --bg:          #111111;
-      --card:        #1C1C1C;
-      --text:        #F0EDE8;
-      --muted:       #9A8A7A;
-      --gold-10:     rgba(184,134,78,.13);
-      --gold-18:     rgba(184,134,78,.28);
-      --gold-40:     rgba(184,134,78,.55);
-      --gold-shadow: rgba(184,134,78,.30);
-      background-image:
-        radial-gradient(ellipse 60% 50% at 10%  5%,  rgba(20,85,85,.12) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 90% 95%, rgba(20,85,85,.12) 0%, transparent 70%);
-    }
-
-    /* Botão dark mode */
-    .dark-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      z-index: 999;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--gold-18);
-      background: var(--card);
-      box-shadow: 0 4px 16px rgba(0,0,0,.15);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .25s var(--ease-spring), box-shadow .25s ease, background .3s, border-color .3s;
-      padding: 0;
-    }
-    .dark-toggle:hover {
-      transform: scale(1.12);
-      box-shadow: 0 6px 22px rgba(0,0,0,.22);
-    }
-    .dark-toggle svg { width: 20px; height: 20px; transition: color .3s; }
-
-    /* ─── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 400px) {
-      body            { padding: 36px 12px 60px; }
-      .profile-name   { font-size: 1.75rem; }
-      .avatar-ring    { width: 96px; height: 96px; }
-      .link-card      { height: 155px; }
-      .card-title     { font-size: 1.25rem; }
-      .card-body      { padding: 16px 18px; width: 66%; }
-    }
-  </style>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/cormorant-garamond-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
 
 <body>
   <div class="container">
-
-    <!-- ── HEADER ───────────────────────────────── -->
     <header class="profile">
-      <!--
-        FOTO DE PERFIL
-        ⚠️  URL do CDN do Instagram expira em alguns dias.
-            Substitua por um arquivo local (ex: foto.jpg) na pasta ikebana-links/.
-      -->
-      <div class="avatar-ring">
-        <img
-          class="avatar"
-          src="logo-ikebana-flores.jpg"
-          alt="Ikebana Flores"
-          loading="eager"
-        >
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo escuro">
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+        </svg>
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false" hidden>
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+
+      <div class="avatar-ring" aria-hidden="true">
+        <img class="avatar" src="assets/logo-ikebana-avatar.webp" width="512" height="256" alt="" fetchpriority="high" decoding="async">
       </div>
       <h1 class="profile-name">Ikebana Flores</h1>
       <p class="profile-tagline">Desde 1988 transformando gestos em sentimentos.</p>
-      <div class="divider">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="2" fill="#B8864E"/>
-          <ellipse cx="12" cy="6"  rx="2.2" ry="4.5" fill="#B8864E" opacity=".45"/>
-          <ellipse cx="12" cy="6"  rx="2.2" ry="4.5" fill="#B8864E" opacity=".45" transform="rotate(60,12,12)"/>
-          <ellipse cx="12" cy="6"  rx="2.2" ry="4.5" fill="#B8864E" opacity=".45" transform="rotate(120,12,12)"/>
-          <ellipse cx="12" cy="6"  rx="2.2" ry="4.5" fill="#B8864E" opacity=".45" transform="rotate(180,12,12)"/>
-          <ellipse cx="12" cy="6"  rx="2.2" ry="4.5" fill="#B8864E" opacity=".45" transform="rotate(240,12,12)"/>
-          <ellipse cx="12" cy="6"  rx="2.2" ry="4.5" fill="#B8864E" opacity=".45" transform="rotate(300,12,12)"/>
+      <div class="divider" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" focusable="false">
+          <circle cx="12" cy="12" r="2"/>
+          <ellipse cx="12" cy="6" rx="2.2" ry="4.5"/>
+          <ellipse cx="12" cy="6" rx="2.2" ry="4.5" transform="rotate(60 12 12)"/>
+          <ellipse cx="12" cy="6" rx="2.2" ry="4.5" transform="rotate(120 12 12)"/>
+          <ellipse cx="12" cy="6" rx="2.2" ry="4.5" transform="rotate(180 12 12)"/>
+          <ellipse cx="12" cy="6" rx="2.2" ry="4.5" transform="rotate(240 12 12)"/>
+          <ellipse cx="12" cy="6" rx="2.2" ry="4.5" transform="rotate(300 12 12)"/>
         </svg>
       </div>
     </header>
 
-    <!-- ── LINKS ─────────────────────────────────── -->
-    <main class="links">
+    <main>
+      <ul class="links" aria-label="Links oficiais">
+        <li>
+          <a class="link-card" data-link-id="whatsapp" href="https://api.whatsapp.com/send/?phone=553187998070&amp;text=Vim+pelo+Instagram+e+quero+saber+mais%21&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer">
+            <img class="card-media" src="assets/banner-whatsapp.webp" width="800" height="400" alt="" loading="eager" fetchpriority="high" decoding="async">
+            <span class="card-body">
+              <span>
+                <span class="card-label">Atendimento</span>
+                <span class="card-title">Converse com nossas atendentes</span>
+              </span>
+              <span class="card-btn" aria-hidden="true">
+                Falar agora
+                <svg viewBox="0 0 24 24" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+              </span>
+            </span>
+          </a>
+        </li>
 
-      <!-- WhatsApp -->
-      <a class="link-card card-whatsapp"
-         href="https://api.whatsapp.com/send/?phone=553187998070&text=Vim+pelo+Instagram+e+quero+saber+mais%21&type=phone_number&app_absent=0&utm_source=instagram&utm_medium=bio&utm_campaign=whatsapp"
-         target="_blank" rel="noopener noreferrer">
-        <div class="card-body">
-          <div>
-            <div class="card-label">Atendimento</div>
-            <div class="card-title">Converse com nossas atendentes</div>
-            <div class="card-desc">Tire suas dúvidas ou faça seu pedido pelo WhatsApp.</div>
-          </div>
-          <div class="card-btn">
-            Falar agora
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+        <li>
+          <a class="link-card card-vitrine" data-link-id="loja" href="https://www.ikebanaflores.com.br/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=home" target="_blank" rel="noopener noreferrer">
+            <img class="card-media" src="assets/banner-vitrine.webp" width="800" height="400" alt="" loading="lazy" fetchpriority="low" decoding="async">
+            <span class="card-body">
+              <span>
+                <span class="card-label">Loja online</span>
+                <span class="card-title">Confira nossos produtos</span>
+              </span>
+              <span class="card-btn" aria-hidden="true">
+                Ver produtos
+                <svg viewBox="0 0 24 24" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+              </span>
+            </span>
+          </a>
+        </li>
 
-      <!-- Confira nossos produtos -->
-      <a class="link-card card-vitrine"
-         href="https://www.ikebanaflores.com.br/?utm_source=instagram&utm_medium=linktree&utm_campaign=bio_instagram&utm_content=home"
-         target="_blank" rel="noopener noreferrer">
-        <div class="card-body">
-          <div>
-            <div class="card-label">Loja online</div>
-            <div class="card-title">Confira nossos produtos</div>
-            <div class="card-desc">Flores, arranjos e presentes especiais para cada momento.</div>
-          </div>
-          <div class="card-btn">
-            Ver produtos
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </div>
-        </div>
-      </a>
+        <li>
+          <a class="link-card" data-link-id="rosa-eterna" href="https://www.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=rosa_eterna" target="_blank" rel="noopener noreferrer">
+            <img class="card-media" src="assets/banner-rosa-eterna.webp" width="800" height="400" alt="" loading="lazy" fetchpriority="low" decoding="async">
+            <span class="card-body">
+              <span>
+                <span class="card-label">Produto especial</span>
+                <span class="card-title">Rosa Eterna</span>
+              </span>
+              <span class="card-btn" aria-hidden="true">
+                Conhecer
+                <svg viewBox="0 0 24 24" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+              </span>
+            </span>
+          </a>
+        </li>
 
-      <!-- Rosa Eterna -->
-      <a class="link-card card-rosa"
-         href="https://www.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&utm_medium=linktree&utm_campaign=bio_instagram&utm_content=site"
-         target="_blank" rel="noopener noreferrer">
-        <div class="card-body">
-          <div>
-            <div class="card-label">Produto especial</div>
-            <div class="card-title">Rosa Eterna</div>
-            <div class="card-desc">Uma rosa real que dura anos, preservada com técnica especial.</div>
-          </div>
-          <div class="card-btn">
-            Conhecer
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-
-      <!-- Curso Buquê -->
-      <a class="link-card card-curso"
-         href="https://www.ikebanaflores.com.br/curso-de-buque-de-flores-para-iniciantes-curso-de-flores-em-bh"
-         target="_blank" rel="noopener noreferrer">
-        <div class="card-body">
-          <div>
-            <div class="card-label">Curso presencial</div>
-            <div class="card-title">Buquê de Flores para Iniciantes</div>
-            <div class="card-desc">Aprenda a montar buquês com nossas especialistas em BH.</div>
-          </div>
-          <div class="card-btn">
-            Saiba mais
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </div>
-        </div>
-      </a>
-
+        <li>
+          <a class="link-card card-curso" data-link-id="curso" href="https://www.ikebanaflores.com.br/curso-de-buque-de-flores-para-iniciantes-curso-de-flores-em-bh?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=curso_buque" target="_blank" rel="noopener noreferrer">
+            <img class="card-media" src="assets/banner-curso.webp" width="800" height="400" alt="" loading="lazy" fetchpriority="low" decoding="async">
+            <span class="card-body">
+              <span>
+                <span class="card-label">Curso presencial</span>
+                <span class="card-title">Buquê de Flores para Iniciantes</span>
+              </span>
+              <span class="card-btn" aria-hidden="true">
+                Saiba mais
+                <svg viewBox="0 0 24 24" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+              </span>
+            </span>
+          </a>
+        </li>
+      </ul>
     </main>
 
-    <!-- ── SOCIAL ─────────────────────────────────── -->
-    <div class="social" role="list" aria-label="Redes sociais">
+    <nav aria-label="Redes sociais">
+      <ul class="social">
+        <li>
+          <a class="social-btn tiktok" data-link-id="tiktok" href="https://www.tiktok.com/@ikebanaflores" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.09-3.18V9.01a6.34 6.34 0 1 0 5.54 6.29V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07Z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="social-btn instagram" data-link-id="instagram" href="https://www.instagram.com/ikebanafloresbh" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="fill" cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="social-btn youtube" data-link-id="youtube" href="https://www.youtube.com/@ikebanaflores" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.19a3 3 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3 3 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3 3 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3 3 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-      <a class="social-btn tiktok"
-         href="https://tiktok.com/@ikebanaflores"
-         target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
-        </svg>
-      </a>
-
-      <a class="social-btn instagram"
-         href="https://instagram.com/ikebanafloresbh"
-         target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/>
-        </svg>
-      </a>
-
-      <a class="social-btn youtube"
-         href="https://youtube.com/@ikebanaflores"
-         target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-        </svg>
-      </a>
-
-    </div>
-
-    <!-- ── FOOTER ─────────────────────────────────── -->
     <footer class="footer">
-      <a href="https://www.ikebanaflores.com.br" target="_blank" rel="noopener noreferrer">
-        <img
-          class="footer-logo"
-          src="https://www.ikebanaflores.com.br/media/tmp/webp/skin/frontend/ikebana/2022/images/logo_png.webp"
-          alt="Ikebana Flores"
-          loading="lazy"
-        >
+      <a class="footer-link" data-link-id="site" href="https://www.ikebanaflores.com.br/" target="_blank" rel="noopener noreferrer">
+        <img class="footer-logo" src="assets/logo-footer.webp" width="276" height="76" alt="Ikebana Flores" loading="lazy" decoding="async">
       </a>
-      <p class="footer-copy">© 2025 Ikebana Flores · Todos os direitos reservados</p>
+      <p class="footer-copy">Ikebana Flores · Desde 1988 · Todos os direitos reservados</p>
     </footer>
-
   </div>
-
-  <!-- ── DARK MODE TOGGLE ──────────────────────── -->
-  <button class="dark-toggle" id="darkBtn" aria-label="Alternar modo escuro">
-    <!-- ícone trocado via JS -->
-  </button>
-
-  <script>
-    const btn  = document.getElementById('darkBtn');
-    const body = document.body;
-    const key  = 'ikebana-mode';
-
-    const iconSol = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
-    const iconLua = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>`;
-
-    function aplicar(dark) {
-      body.classList.toggle('dark', dark);
-      btn.innerHTML = dark ? iconSol : iconLua;
-      btn.setAttribute('aria-label', dark ? 'Ativar modo claro' : 'Ativar modo escuro');
-      localStorage.setItem(key, dark ? 'dark' : 'light');
-    }
-
-    btn.addEventListener('click', () => aplicar(!body.classList.contains('dark')));
-
-    // Carrega preferência salva ou usa preferência do sistema operacional
-    const salvo = localStorage.getItem(key);
-    const prefSistema = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    aplicar(salvo ? salvo === 'dark' : prefSistema);
-  </script>
-
 </body>
 </html>
