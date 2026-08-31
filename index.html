@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; base-uri 'none'; form-action 'none'; require-trusted-types-for 'script'; trusted-types 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com https://*.clarity.ms; style-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://*.clarity.ms https://c.bing.com; font-src 'self'; connect-src https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.clarity.ms https://c.bing.com; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src blob:; manifest-src 'self'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="gtm-container-id" content="GTM-M8T8Q6B7">
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Links oficiais da Ikebana Flores. Desde 1988 transformando gestos em sentimentos.">
   <meta name="theme-color" id="theme-color" content="#FAFAF7">
@@ -33,6 +34,7 @@
   <link rel="preload" href="assets/fonts/cormorant-garamond-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script src="measurement.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 
@@ -70,7 +72,7 @@
     <main>
       <ul class="links" aria-label="Links oficiais">
         <li>
-          <a class="link-card" data-link-id="whatsapp" href="https://api.whatsapp.com/send/?phone=553187998070&amp;text=Vim+pelo+Instagram+e+quero+saber+mais%21&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer">
+          <a class="link-card" data-link-id="whatsapp" data-link-name="Atendimento via WhatsApp" data-link-section="primary" data-link-type="whatsapp" data-link-position="1" href="https://api.whatsapp.com/send/?phone=553187998070&amp;text=Vim+pelo+Instagram+e+quero+saber+mais%21&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer">
             <img class="card-media" src="assets/banner-whatsapp.webp" width="800" height="400" alt="" loading="eager" fetchpriority="high" decoding="async">
             <span class="card-body">
               <span>
@@ -86,7 +88,7 @@
         </li>
 
         <li>
-          <a class="link-card card-vitrine" data-link-id="loja" href="https://www.ikebanaflores.com.br/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=home" target="_blank" rel="noopener noreferrer">
+          <a class="link-card card-vitrine" data-link-id="loja" data-link-name="Loja online" data-link-section="primary" data-link-type="store" data-link-position="2" href="https://www.ikebanaflores.com.br/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=home" target="_blank" rel="noopener noreferrer">
             <img class="card-media" src="assets/banner-vitrine.webp" width="800" height="400" alt="" loading="lazy" fetchpriority="low" decoding="async">
             <span class="card-body">
               <span>
@@ -102,7 +104,7 @@
         </li>
 
         <li>
-          <a class="link-card" data-link-id="rosa-eterna" href="https://www.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=rosa_eterna" target="_blank" rel="noopener noreferrer">
+          <a class="link-card" data-link-id="rosa-eterna" data-link-name="Rosa Eterna" data-link-section="primary" data-link-type="product" data-link-position="3" href="https://www.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=rosa_eterna" target="_blank" rel="noopener noreferrer">
             <img class="card-media" src="assets/banner-rosa-eterna.webp" width="800" height="400" alt="" loading="lazy" fetchpriority="low" decoding="async">
             <span class="card-body">
               <span>
@@ -118,7 +120,7 @@
         </li>
 
         <li>
-          <a class="link-card card-curso" data-link-id="curso" href="https://www.ikebanaflores.com.br/curso-de-buque-de-flores-para-iniciantes-curso-de-flores-em-bh?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=curso_buque" target="_blank" rel="noopener noreferrer">
+          <a class="link-card card-curso" data-link-id="curso" data-link-name="Curso de buque" data-link-section="primary" data-link-type="course" data-link-position="4" href="https://www.ikebanaflores.com.br/curso-de-buque-de-flores-para-iniciantes-curso-de-flores-em-bh?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=ikebana_links&amp;utm_content=curso_buque" target="_blank" rel="noopener noreferrer">
             <img class="card-media" src="assets/banner-curso.webp" width="800" height="400" alt="" loading="lazy" fetchpriority="low" decoding="async">
             <span class="card-body">
               <span>
@@ -138,17 +140,17 @@
     <nav aria-label="Redes sociais">
       <ul class="social">
         <li>
-          <a class="social-btn tiktok" data-link-id="tiktok" href="https://www.tiktok.com/@ikebanaflores" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <a class="social-btn tiktok" data-link-id="tiktok" data-link-name="TikTok" data-link-section="social" data-link-type="social" data-link-position="1" href="https://www.tiktok.com/@ikebanaflores" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.09-3.18V9.01a6.34 6.34 0 1 0 5.54 6.29V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07Z"/></svg>
           </a>
         </li>
         <li>
-          <a class="social-btn instagram" data-link-id="instagram" href="https://www.instagram.com/ikebanafloresbh" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a class="social-btn instagram" data-link-id="instagram" data-link-name="Instagram" data-link-section="social" data-link-type="social" data-link-position="2" href="https://www.instagram.com/ikebanafloresbh" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="fill" cx="17.5" cy="6.5" r="1"/></svg>
           </a>
         </li>
         <li>
-          <a class="social-btn youtube" data-link-id="youtube" href="https://www.youtube.com/@ikebanaflores" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <a class="social-btn youtube" data-link-id="youtube" data-link-name="YouTube" data-link-section="social" data-link-type="social" data-link-position="3" href="https://www.youtube.com/@ikebanaflores" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.19a3 3 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3 3 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3 3 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3 3 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
           </a>
         </li>
@@ -156,11 +158,23 @@
     </nav>
 
     <footer class="footer">
-      <a class="footer-link" data-link-id="site" href="https://www.ikebanaflores.com.br/" target="_blank" rel="noopener noreferrer">
+      <a class="footer-link" data-link-id="site" data-link-name="Site institucional" data-link-section="footer" data-link-type="website" data-link-position="1" href="https://www.ikebanaflores.com.br/" target="_blank" rel="noopener noreferrer">
         <img class="footer-logo" src="assets/logo-footer.webp" width="276" height="76" alt="Ikebana Flores" loading="lazy" decoding="async">
       </a>
       <p class="footer-copy">Ikebana Flores · Desde 1988 · Todos os direitos reservados</p>
+      <button class="privacy-settings" id="privacy-settings" type="button">Preferências de cookies</button>
     </footer>
   </div>
+
+  <section class="consent-banner" id="consent-banner" role="dialog" aria-labelledby="consent-title" aria-describedby="consent-description" hidden>
+    <div class="consent-copy">
+      <h2 id="consent-title">Sua privacidade importa</h2>
+      <p id="consent-description">Usamos cookies de analytics para entender acessos, cliques e melhorar esta página. Você pode aceitar ou recusar.</p>
+    </div>
+    <div class="consent-actions">
+      <button class="consent-button consent-reject" id="consent-reject" type="button">Recusar</button>
+      <button class="consent-button consent-accept" id="consent-accept" type="button">Aceitar analytics</button>
+    </div>
+  </section>
 </body>
 </html>
