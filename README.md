@@ -4,7 +4,7 @@ Site estático preparado para publicação no GitHub Pages em `https://links.ike
 
 ## Antes de publicar
 
-1. Leia `ANALYTICS-SETUP.md` e configure o container `GTM-M8T8Q6B7`.
+1. Leia `ANALYTICS-SETUP.md`; o container `GTM-M8T8Q6B7` já está publicado como **Versão 2 — Ikebana Links analytics v1.0**.
 2. Peça à Bis2Bis para atualizar na GoCache o cabeçalho CSP descrito em `SECURITY-DEPLOYMENT.md`. A política antiga usa `connect-src 'none'` e bloqueará toda a mensuração se permanecer ativa.
 3. Preserve integralmente o projeto e a implementação atuais do Microsoft Clarity. O agregador usa o projeto separado **Ikebana Links** (`yb3ifl2hxa`) e não compartilha a configuração do site principal.
 4. Execute:

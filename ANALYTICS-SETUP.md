@@ -12,7 +12,7 @@ São usados três identificadores:
 - GA4: `G-0NBE7P632T`, fluxo Web existente da propriedade `Compras.Ikebana`, usado somente na Google tag dentro do GTM.
 - Clarity: projeto separado **Ikebana Links**, ID `yb3ifl2hxa`, usado somente no GTM do agregador. A implementação existente da Ikebana Flores permanece protegida e não deve ser editada, removida nem reutilizada.
 
-O container do GTM já está identificado no código. A publicação do container e do site continua sendo uma etapa controlada, posterior à validação.
+O site está publicado pela branch `main` e o container está ativo como **Versão 2 — Ikebana Links analytics v1.0**. Alterações futuras devem passar pela validação e por uma nova versão do GTM.
 
 ## 2. Eventos implementados
 
