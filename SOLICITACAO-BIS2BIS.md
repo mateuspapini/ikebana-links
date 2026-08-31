@@ -1,12 +1,14 @@
-# Solicitação à Bis2Bis — liberação de analytics no agregador de links
+# Contingência Bis2Bis — liberação de analytics no agregador de links
+
+> **Não é necessário enviar esta solicitação no cenário atual.** Na validação de produção de 31/08/2026, `links.ikebanaflores.com.br` respondeu diretamente pelo GitHub Pages, sem um cabeçalho CSP da GoCache sobrescrevendo a política do site. Use este documento somente se a GoCache for colocada na frente do subdomínio ou se surgir um cabeçalho HTTP com `connect-src 'none'`.
 
 Solicitamos uma alteração restrita ao host `links.ikebanaflores.com.br`. Nenhum cabeçalho, cache, DNS ou comportamento de `ikebanaflores.com.br`, `www.ikebanaflores.com.br` ou de outros subdomínios deve ser modificado.
 
 ## Contexto
 
-O agregador será medido pelo Google Tag Manager `GTM-M8T8Q6B7`, Google Analytics 4 e Microsoft Clarity. O cabeçalho CSP atual contém `connect-src 'none'`, que impede o navegador de enviar os dados.
+O agregador é medido pelo Google Tag Manager `GTM-M8T8Q6B7`, Google Analytics 4 e pelo projeto separado Microsoft Clarity **Ikebana Links**. Se um proxy passar a enviar `connect-src 'none'`, o navegador deixará de enviar esses dados.
 
-## Alteração solicitada
+## Alteração a solicitar somente se houver bloqueio
 
 Criar ou atualizar uma Smart Rule exclusiva para:
 
