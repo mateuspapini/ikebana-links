@@ -21,8 +21,20 @@ EXPECTED_LINKS = {
     "site": "https://www.ikebanaflores.com.br/",
 }
 
+EXPECTED_LINK_METADATA = {
+    "whatsapp": ("Atendimento via WhatsApp", "primary", "whatsapp", "1"),
+    "loja": ("Loja online", "primary", "store", "2"),
+    "rosa-eterna": ("Rosa Eterna", "primary", "product", "3"),
+    "curso": ("Curso de buque", "primary", "course", "4"),
+    "tiktok": ("TikTok", "social", "social", "1"),
+    "instagram": ("Instagram", "social", "social", "2"),
+    "youtube": ("YouTube", "social", "social", "3"),
+    "site": ("Site institucional", "footer", "website", "1"),
+}
+
 REQUIRED_FILES = {
     "app.js",
+    "measurement.js",
     "styles.css",
     "favicon.svg",
     "site.webmanifest",
@@ -53,6 +65,7 @@ class SiteParser(HTMLParser):
         self.inline_styles = 0
         self.event_handlers: list[str] = []
         self.csp = ""
+        self.gtm_container_id = ""
 
     def handle_starttag(self, tag: str, attrs_list: list[tuple[str, str | None]]) -> None:
         attrs = {key: value or "" for key, value in attrs_list}
@@ -72,6 +85,8 @@ class SiteParser(HTMLParser):
             self.inline_styles += 1
         if tag == "meta" and attrs.get("http-equiv", "").lower() == "content-security-policy":
             self.csp = attrs.get("content", "")
+        if tag == "meta" and attrs.get("name", "").lower() == "gtm-container-id":
+            self.gtm_container_id = attrs.get("content", "")
 
 
 def validate_html(html: str, root: Path) -> list[str]:
@@ -92,6 +107,16 @@ def validate_html(html: str, root: Path) -> list[str]:
         if not {"noopener", "noreferrer"}.issubset(rel):
             errors.append(f"{link_id}: rel must include noopener and noreferrer")
 
+        expected_name, expected_section, expected_type, expected_position = EXPECTED_LINK_METADATA[link_id]
+        actual_metadata = (
+            attrs.get("data-link-name"),
+            attrs.get("data-link-section"),
+            attrs.get("data-link-type"),
+            attrs.get("data-link-position"),
+        )
+        if actual_metadata != (expected_name, expected_section, expected_type, expected_position):
+            errors.append(f"{link_id}: unexpected measurement metadata {actual_metadata!r}")
+
     if "553187998070" not in html:
         errors.append("Protected WhatsApp number is missing")
     if "http://" in html:
@@ -103,17 +128,21 @@ def validate_html(html: str, root: Path) -> list[str]:
 
     required_csp = {
         "default-src 'none'",
-        "script-src 'self'",
+        "script-src 'self' https://www.googletagmanager.com https://*.clarity.ms",
         "style-src 'self'",
-        "connect-src 'none'",
+        "connect-src https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.clarity.ms https://c.bing.com",
         "object-src 'none'",
         "base-uri 'none'",
         "form-action 'none'",
-        "require-trusted-types-for 'script'",
     }
     missing_csp = sorted(item for item in required_csp if item not in parser.csp)
     if missing_csp:
         errors.append(f"CSP is missing: {', '.join(missing_csp)}")
+    if "'unsafe-inline'" in parser.csp or "'unsafe-eval'" in parser.csp:
+        errors.append("CSP must not allow unsafe-inline or unsafe-eval")
+
+    if not parser.gtm_container_id.startswith("GTM-"):
+        errors.append("GTM container meta tag is missing or malformed")
 
     for relative in REQUIRED_FILES:
         if not (root / relative).is_file():
@@ -123,6 +152,28 @@ def validate_html(html: str, root: Path) -> list[str]:
         clean = ref.split("?", 1)[0].split("#", 1)[0]
         if clean and not clean.startswith(("https://", "data:")) and not (root / clean).is_file():
             errors.append(f"Referenced local asset is missing: {clean}")
+
+    return errors
+
+
+def validate_measurement_script(root: Path) -> list[str]:
+    source = (root / "measurement.js").read_text(encoding="utf-8")
+    errors: list[str] = []
+    required_tokens = {
+        'pushEvent("link_click"': "link_click event",
+        'pushEvent("link_view"': "link_view event",
+        'pushEvent("scroll_depth"': "scroll_depth event",
+        'pushEvent("theme_change"': "theme_change event",
+        'sanitizedUrl.search = ""': "query-string sanitization",
+        "existingGtm": "duplicate GTM guard",
+    }
+
+    for token, description in required_tokens.items():
+        if token not in source:
+            errors.append(f"measurement.js is missing {description}")
+
+    if "gtag/js" in source or "clarity.ms/tag" in source:
+        errors.append("measurement.js must not install GA4 or Clarity directly; use the GTM container")
 
     return errors
 
@@ -138,10 +189,20 @@ def load_published(url: str) -> str:
 def main() -> int:
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument("--published", help="Also validate the HTML currently published at this URL")
+    arg_parser.add_argument(
+        "--require-configured-analytics",
+        action="store_true",
+        help="Fail when the GTM placeholder has not been replaced",
+    )
     args = arg_parser.parse_args()
 
     root = Path(__file__).resolve().parent.parent
-    errors = validate_html((root / "index.html").read_text(encoding="utf-8"), root)
+    html = (root / "index.html").read_text(encoding="utf-8")
+    errors = validate_html(html, root)
+    errors.extend(validate_measurement_script(root))
+
+    if args.require_configured_analytics and "GTM-REPLACE_ME" in html:
+        errors.append("Replace GTM-REPLACE_ME with the production GTM container ID")
 
     if args.published:
         try:
