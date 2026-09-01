@@ -1,7 +1,7 @@
 "use strict";
 
 (() => {
-  const measurementVersion = "1.1.0";
+  const measurementVersion = "1.2.0";
   const consentStorageKey = "ikebana-analytics-consent";
   const trackedLinkSelector = "a[data-link-id]";
   const scrollThresholds = [25, 50, 75, 90, 100];
@@ -231,15 +231,21 @@
     const consentAccept = document.getElementById("consent-accept");
     const consentReject = document.getElementById("consent-reject");
     const privacySettings = document.getElementById("privacy-settings");
+    let restoreFocusToPrivacySettings = false;
 
-    const showConsentBanner = () => {
+    const showConsentBanner = ({ restoreFocus = false } = {}) => {
       if (!consentBanner) return;
+      restoreFocusToPrivacySettings = restoreFocus;
       consentBanner.hidden = false;
-      consentAccept?.focus();
+      consentAccept?.focus({ preventScroll: true });
     };
 
     const hideConsentBanner = () => {
       if (consentBanner) consentBanner.hidden = true;
+      if (restoreFocusToPrivacySettings) {
+        privacySettings?.focus({ preventScroll: true });
+      }
+      restoreFocusToPrivacySettings = false;
     };
 
     const updateConsent = (status) => {
@@ -259,12 +265,11 @@
       }
 
       hideConsentBanner();
-      privacySettings?.focus();
     };
 
     consentAccept?.addEventListener("click", () => updateConsent("granted"));
     consentReject?.addEventListener("click", () => updateConsent("denied"));
-    privacySettings?.addEventListener("click", showConsentBanner);
+    privacySettings?.addEventListener("click", () => showConsentBanner({ restoreFocus: true }));
 
     if (initialConsent === null) showConsentBanner();
   };

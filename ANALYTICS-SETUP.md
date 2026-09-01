@@ -38,11 +38,11 @@ GA4 continuará criando automaticamente `page_view`, `session_start`, `first_vis
 
 | Parâmetro | Uso |
 |---|---|
-| `link_id` | ID estável: `whatsapp`, `loja`, `rosa-eterna`, `curso`, `tiktok`, `instagram`, `youtube` ou `site` |
+| `link_id` | ID estável: `whatsapp`, `loja`, `rosa-eterna`, `tiktok`, `instagram`, `youtube` ou `loja-footer` |
 | `link_name` | Nome legível e estável do destino |
 | `link_url` | URL de destino sem query string nem fragmento |
 | `link_domain` | Domínio de destino |
-| `link_type` | Tipo: WhatsApp, loja, produto, curso, social ou site |
+| `link_type` | Tipo atual: WhatsApp, loja, produto ou social |
 | `link_section` | `primary`, `social` ou `footer` |
 | `link_position` | Posição dentro da seção |
 | `link_position_global` | Posição entre todos os links da página |

@@ -257,8 +257,7 @@ body::after { bottom: -40px; left: -40px; transform: scaleX(-1); }
   transition: transform .35s var(--ease);
 }
 
-.card-vitrine .card-media,
-.card-curso .card-media {
+.card-vitrine .card-media {
   object-position: right center;
 }
 
