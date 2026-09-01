@@ -14,22 +14,20 @@ EXPECTED_LINKS = {
     "whatsapp": "https://api.whatsapp.com/send/?phone=553187998070&text=Vim+pelo+Instagram+e+quero+saber+mais%21&type=phone_number&app_absent=0",
     "loja": "https://compras.ikebanaflores.com.br/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=home",
     "rosa-eterna": "https://compras.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=rosa_eterna",
-    "curso": "https://compras.ikebanaflores.com.br/curso-de-buque-de-flores-para-iniciantes-curso-de-flores-em-bh?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=curso_buque",
     "tiktok": "https://www.tiktok.com/@ikebanaflores",
     "instagram": "https://www.instagram.com/ikebanafloresbh",
     "youtube": "https://www.youtube.com/@ikebanaflores",
-    "site": "https://www.ikebanaflores.com.br/",
+    "loja-footer": "https://compras.ikebanaflores.com.br/",
 }
 
 EXPECTED_LINK_METADATA = {
     "whatsapp": ("Atendimento via WhatsApp", "primary", "whatsapp", "1"),
     "loja": ("Loja online", "primary", "store", "2"),
     "rosa-eterna": ("Rosa Eterna", "primary", "product", "3"),
-    "curso": ("Curso de buque", "primary", "course", "4"),
     "tiktok": ("TikTok", "social", "social", "1"),
     "instagram": ("Instagram", "social", "social", "2"),
     "youtube": ("YouTube", "social", "social", "3"),
-    "site": ("Site institucional", "footer", "website", "1"),
+    "loja-footer": ("Loja online — rodapé", "footer", "store", "1"),
 }
 
 REQUIRED_FILES = {
@@ -44,7 +42,6 @@ REQUIRED_FILES = {
     "assets/apple-touch-icon.png",
     "assets/icon-192.png",
     "assets/icon-512.png",
-    "assets/banner-curso.webp",
     "assets/banner-rosa-eterna.webp",
     "assets/banner-vitrine.webp",
     "assets/banner-whatsapp.webp",
@@ -166,6 +163,8 @@ def validate_measurement_script(root: Path) -> list[str]:
         'pushEvent("theme_change"': "theme_change event",
         'sanitizedUrl.search = ""': "query-string sanitization",
         "existingGtm": "duplicate GTM guard",
+        "restoreFocusToPrivacySettings": "consent focus restoration guard",
+        "preventScroll: true": "scroll-safe consent focus management",
     }
 
     for token, description in required_tokens.items():
