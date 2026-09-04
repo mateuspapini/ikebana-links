@@ -12,12 +12,12 @@ from urllib.request import Request, urlopen
 
 EXPECTED_LINKS = {
     "whatsapp": "https://api.whatsapp.com/send/?phone=553187998070&text=Vim+pelo+Instagram+e+quero+saber+mais%21&type=phone_number&app_absent=0",
-    "loja": "https://compras.ikebanaflores.com.br/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=home",
-    "rosa-eterna": "https://compras.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=rosa_eterna",
+    "loja": "https://www.ikebanaflores.com.br/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=home",
+    "rosa-eterna": "https://www.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=rosa_eterna",
     "tiktok": "https://www.tiktok.com/@ikebanaflores",
     "instagram": "https://www.instagram.com/ikebanafloresbh",
     "youtube": "https://www.youtube.com/@ikebanaflores",
-    "loja-footer": "https://compras.ikebanaflores.com.br/",
+    "loja-footer": "https://www.ikebanaflores.com.br/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=home",
 }
 
 EXPECTED_LINK_METADATA = {
