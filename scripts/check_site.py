@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 
 
 EXPECTED_LINKS = {
-    "whatsapp": "https://api.whatsapp.com/send/?phone=553187998070&text=Vim+pelo+Instagram+e+quero+saber+mais%21&type=phone_number&app_absent=0",
+    "whatsapp": "https://api.whatsapp.com/send/?phone=553180470550&text=Vim+pelo+Instagram+e+quero+saber+mais%21&type=phone_number&app_absent=0",
     "loja": "https://www.ikebanaflores.com.br/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=home",
     "rosa-eterna": "https://www.ikebanaflores.com.br/flores/rosa-eterna-bh/?utm_source=instagram&utm_medium=bio&utm_campaign=ikebana_links&utm_content=rosa_eterna",
     "tiktok": "https://www.tiktok.com/@ikebanaflores",
@@ -114,7 +114,7 @@ def validate_html(html: str, root: Path) -> list[str]:
         if actual_metadata != (expected_name, expected_section, expected_type, expected_position):
             errors.append(f"{link_id}: unexpected measurement metadata {actual_metadata!r}")
 
-    if "553187998070" not in html:
+    if "553180470550" not in html:
         errors.append("Protected WhatsApp number is missing")
     if "http://" in html:
         errors.append("Insecure http:// URL found")
